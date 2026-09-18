@@ -3,413 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uninformed vs Informed Search - Academic Project</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
+    <title>Uninformed vs Informed Search | Design & Analysis of Algorithms</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav id="navbar">
+
+    <!-- Sticky Navigation -->
+    <nav>
+        <div class="nav-logo">DAA <span>Project</span></div>
         <ul class="nav-links">
-            <li><a href="#abstract" class="nav-link">Abstract</a></li>
-            <li><a href="#intro" class="nav-link">Introduction</a></li>
-            <li><a href="#comparison" class="nav-link">Comparison</a></li>
-            <li><a href="#algorithms" class="nav-link">Algorithms</a></li>
-            <li><a href="#example" class="nav-link">Example</a></li>
-            <li><a href="#applications" class="nav-link">Applications</a></li>
-            <li><a href="#future" class="nav-link">Future Scope</a></li>
-            <li><a href="#conclusion" class="nav-link">Conclusion</a></li>
+            <li><a href="#abstract">Abstract</a></li>
+            <li><a href="#comparison">Comparison</a></li>
+            <li><a href="#algorithms">Algorithms</a></li>
+            <li><a href="#example">Example</a></li>
+            <li><a href="#applications">Applications</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero" id="home">
-        <div class="hero-content">
-            <h4>S.B. Jain Institute of Technology, Management and Research, Nagpur</h4>
-            <p class="subtitle">Dept. of CSE (Data Science) | Subject: AI / DAA (N-PCCCD501T)</p>
-            <h1>Uninformed vs Informed Search</h1>
-            <div class="author-card glass-card">
-                <p>Prepared by</p>
-                <p class="author-name">Sejal Raju Ambilduke</p>
+    <!-- Header / Hero Section -->
+    <header>
+        <div class="fade-in">
+            <p class="institute-name">S.B. Jain Institute of Technology, Management and Research, Nagpur</p>
+            <p style="color: var(--accent); font-weight: 500; letter-spacing: 1px;">Dept. of CSE (Data Science)</p>
+            <h1 class="hero-title">Uninformed <span>vs</span> Informed Search</h1>
+            <p class="course-meta">Design and Analysis of Algorithms (N-PCCCD501P)</p>
+            
+            <div class="author-card">
+                <h3>Sejal Raju Ambilduke</h3>
                 <p>USN: CD24047</p>
             </div>
         </div>
     </header>
 
     <!-- Abstract Section -->
-    <section id="abstract" class="animate-on-scroll">
+    <section id="abstract" class="fade-in">
         <h2 class="section-title">Abstract</h2>
-        <div class="card glass-card">
-            <p>Search algorithms form the backbone of problem-solving in Artificial Intelligence and algorithmic design. This project presents a comprehensive comparative analysis of two fundamental paradigms: Uninformed (Blind) Search and Informed (Heuristic) Search. Uninformed search algorithms, such as Breadth-First Search (BFS) and Uniform Cost Search (UCS), operate strictly based on the problem definition without any domain-specific knowledge about the goal's location. In contrast, Informed search algorithms like A* and Greedy Best-First Search leverage heuristic functions to estimate the cost to reach the goal, guiding the exploration process more efficiently. This study evaluates these approaches based on time complexity, space complexity, completeness, and optimality. Through detailed algorithmic breakdown and practical examples, the project demonstrates how informed search drastically reduces the search space for complex problems, while uninformed search remains reliable for scenarios where heuristic formulation is impossible.</p>
+        <div class="card">
+            <p class="abstract-text">
+                Search algorithms represent a fundamental cornerstone in Artificial Intelligence and computational problem-solving. This project explores the theoretical and practical distinctions between two primary categories of search strategies: <strong>Uninformed (Blind) Search</strong> and <strong>Informed (Heuristic) Search</strong>. Uninformed search algorithms operate systematically without domain-specific knowledge regarding the goal's location, making them robust but computationally expensive for large state spaces. Conversely, informed search algorithms leverage heuristic evaluation functions to estimate the cost to reach a goal, guiding the search process efficiently towards optimal solutions. By analyzing and comparing these paradigms, this study highlights their respective time complexities, space complexities, completeness, optimality, and real-world applicability.
+            </p>
         </div>
     </section>
 
     <!-- Introduction Section -->
-    <section id="intro" class="animate-on-scroll alt-bg">
+    <section id="intro" class="fade-in">
         <h2 class="section-title">Introduction</h2>
-        <div class="grid-2-col">
-            <div class="card glass-card uninformed-theme">
-                <h3><i class="fas fa-eye-slash icon-uninformed"></i> Uninformed Search</h3>
-                <p>Also known as blind, exhaustive, or brute-force search. These algorithms have no additional information about states beyond that provided in the problem definition. They examine every node in a systematic way until the goal is found. Since they don't know how far they are from the goal, they are generally less efficient in terms of time and space, but they guarantee finding a solution if one exists (completeness).</p>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Uninformed Search</h3>
+                <p class="intro-text">
+                    Also known as "Blind Search" or "Brute-Force Search". These algorithms have no additional information about states beyond that provided in the problem definition. All they can do is generate successors and distinguish a goal state from a non-goal state. The search proceeds systematically through the state space.
+                </p>
             </div>
-            <div class="card glass-card informed-theme">
-                <h3><i class="fas fa-eye icon-informed"></i> Informed Search</h3>
-                <p>Also known as heuristic or directed search. These algorithms utilize problem-specific knowledge to find solutions more efficiently. They use a heuristic function, often denoted as <em>h(n)</em>, which estimates the cost from the current state to the goal. By evaluating nodes based on this heuristic (and sometimes combined with path cost), informed search algorithms can prioritize paths that are most likely to lead quickly to the goal, drastically reducing the search space.</p>
+            <div class="card">
+                <h3>Informed Search</h3>
+                <p class="intro-text">
+                    Also known as "Heuristic Search". These algorithms use problem-specific knowledge to find solutions more efficiently than blind search. By utilizing a heuristic function <em>h(n)</em>, they evaluate the "promise" of a node, thereby prioritizing paths that appear to lead more directly to the goal state.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Section -->
-    <section id="comparison" class="animate-on-scroll">
+    <!-- Comparison Table (Card Layout) -->
+    <section id="comparison" class="fade-in">
         <h2 class="section-title">Comparison Analysis</h2>
-        <div class="grid-2-col">
-            <div class="card glass-card list-card uninformed-theme">
-                <h3><i class="fas fa-map-marked"></i> Uninformed Search</h3>
-                <ul>
-                    <li><strong>Definition:</strong> Searches without any domain-specific knowledge.</li>
-                    <li><strong>Knowledge of Goal:</strong> None (Blind). Only knows if the current state is the goal.</li>
-                    <li><strong>Exploration Style:</strong> Systematic and exhaustive exploration.</li>
-                    <li><strong>Performance:</strong> Generally slower and consumes more memory (exponential time complexity in worst cases).</li>
-                    <li><strong>Use Cases:</strong> Small search spaces, or when no heuristic is available.</li>
-                    <li><strong>Examples:</strong> BFS, DFS, Uniform Cost Search (UCS).</li>
+        <div class="grid-2">
+            <!-- Uninformed Comparison -->
+            <div class="card compare-card compare-uninformed">
+                <h3>Uninformed Search</h3>
+                <ul class="feature-list">
+                    <li>
+                        <strong>Knowledge of Goal</strong>
+                        No domain knowledge or clues about how far the goal is from the current state.
+                    </li>
+                    <li>
+                        <strong>Exploration Style</strong>
+                        Systematic, exhaustive, and brute-force (e.g., exploring level by level or depth-first).
+                    </li>
+                    <li>
+                        <strong>Efficiency</strong>
+                        Highly time and memory consuming for complex problems.
+                    </li>
+                    <li>
+                        <strong>Use Cases</strong>
+                        Small search spaces, instances where the path cost is uniform, or when heuristics cannot be defined.
+                    </li>
+                    <li>
+                        <strong>Examples</strong>
+                        Breadth-First Search (BFS), Depth-First Search (DFS), Uniform Cost Search (UCS).
+                    </li>
                 </ul>
             </div>
-            <div class="card glass-card list-card informed-theme">
-                <h3><i class="fas fa-compass"></i> Informed Search</h3>
-                <ul>
-                    <li><strong>Definition:</strong> Searches using domain-specific heuristics.</li>
-                    <li><strong>Knowledge of Goal:</strong> Uses heuristic function <em>h(n)</em> to estimate distance to goal.</li>
-                    <li><strong>Exploration Style:</strong> Directed exploration, prioritizing promising paths.</li>
-                    <li><strong>Performance:</strong> Faster and more memory-efficient depending on the quality of the heuristic.</li>
-                    <li><strong>Use Cases:</strong> Large search spaces, pathfinding, game playing, complex routing.</li>
-                    <li><strong>Examples:</strong> A* Search, Greedy Best-First Search, IDA*.</li>
+
+            <!-- Informed Comparison -->
+            <div class="card compare-card compare-informed">
+                <h3>Informed Search</h3>
+                <ul class="feature-list">
+                    <li>
+                        <strong>Knowledge of Goal</strong>
+                        Utilizes heuristic functions <em>h(n)</em> to estimate the distance to the goal state.
+                    </li>
+                    <li>
+                        <strong>Exploration Style</strong>
+                        Targeted and prioritized. Explores paths that seem most promising first.
+                    </li>
+                    <li>
+                        <strong>Efficiency</strong>
+                        Significantly faster and more memory-efficient when a good heuristic is used.
+                    </li>
+                    <li>
+                        <strong>Use Cases</strong>
+                        Large/complex search spaces, routing, game-playing AI, optimization problems.
+                    </li>
+                    <li>
+                        <strong>Examples</strong>
+                        A* Search, Greedy Best-First Search.
+                    </li>
                 </ul>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Proposed System Section -->
-    <section id="system" class="animate-on-scroll alt-bg">
-        <h2 class="section-title">Proposed System Flow Comparison</h2>
-        <div class="diagram-box glass-card">
-            <h3 class="diagram-title">Search Paradigm Execution Flow</h3>
-            
-            <p class="flow-label">Uninformed Search Flow (UCS):</p>
-            <div class="flow-row">
-                <div class="flow-node">Start Node</div>
-                <i class="fas fa-arrow-right flow-arrow"></i>
-                <div class="flow-node">Evaluate g(n)</div>
-                <i class="fas fa-arrow-right flow-arrow"></i>
-                <div class="flow-node">Expand Lowest Cost</div>
-                <i class="fas fa-arrow-right flow-arrow"></i>
-                <div class="flow-node goal-node">Goal Found</div>
-            </div>
-            
-            <hr class="flow-divider">
-            
-            <p class="flow-label">Informed Search Flow (A*):</p>
-            <div class="flow-row">
-                <div class="flow-node informed-node">Start Node</div>
-                <i class="fas fa-arrow-right flow-arrow"></i>
-                <div class="flow-node informed-node">Calc f(n) = g(n) + h(n)</div>
-                <i class="fas fa-arrow-right flow-arrow"></i>
-                <div class="flow-node informed-node">Expand Best Node</div>
-                <i class="fas fa-arrow-right flow-arrow"></i>
-                <div class="flow-node goal-node">Optimal Goal</div>
             </div>
         </div>
     </section>
 
     <!-- Algorithms Section -->
-    <section id="algorithms" class="animate-on-scroll">
-        <h2 class="section-title">Core Algorithms</h2>
-        <div class="grid-2-col">
-            <!-- UCS Box -->
-            <div class="code-editor-box uninformed-theme">
-                <div class="code-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                    <span class="filename">UCS_Algorithm.pseudo</span>
+    <section id="algorithms" class="fade-in">
+        <h2 class="section-title">Algorithmic Step-by-Step</h2>
+        <div class="grid-2">
+            <!-- UCS -->
+            <div class="algo-container algo-uninformed">
+                <div class="algo-header">
+                    <span>Uniform Cost Search (UCS)</span>
+                    <span style="color: var(--accent);">O(b^(1+⌊C*/ε⌋))</span>
                 </div>
-                <div class="code-content">
-                    <span class="code-comment">// Uninformed Search Algorithm</span>
-                    <span class="code-comment">// Expands the node with lowest path cost g(n)</span>
-                    <ol class="code-timeline">
-                        <li><span class="keyword">Insert</span> root into priority queue <span class="string">Q</span> by <span class="string">g(n)</span></li>
-                        <li><span class="keyword">While</span> <span class="string">Q</span> is not empty:
-                            <ol>
-                                <li><span class="keyword">Pop</span> node <span class="string">n</span> with lowest <span class="string">g(n)</span></li>
-                                <li><span class="keyword">If</span> <span class="string">n</span> is goal, <span class="keyword">Return</span> path</li>
-                                <li><span class="keyword">For each</span> child <span class="string">c</span> of <span class="string">n</span>:
-                                    <ul>
-                                        <li>cost = <span class="string">g(n) + cost(n, c)</span></li>
-                                        <li><span class="keyword">If</span> <span class="string">c</span> not in <span class="string">Q</span>/visited, push to <span class="string">Q</span></li>
-                                        <li><span class="keyword">Else if</span> lower cost, update in <span class="string">Q</span></li>
-                                    </ul>
-                                </li>
-                            </ol>
-                        </li>
-                        <li><span class="keyword">Return</span> failure</li>
-                    </ol>
-                </div>
+                <ol class="code-steps">
+                    <li>Insert the root node into the priority queue (Frontier) ordered by path cost <strong>g(n)</strong>.</li>
+                    <li>If the priority queue is empty, return failure.</li>
+                    <li>Pop the node <em>n</em> with the lowest cost <strong>g(n)</strong>.</li>
+                    <li>If <em>n</em> is the goal state, return the solution path and cost.</li>
+                    <li>Expand node <em>n</em>: For each successor <em>m</em>:
+                        <br>&nbsp;&nbsp;Calculate new cost: g(m) = g(n) + cost(n, m)
+                    </li>
+                    <li>If <em>m</em> is not in Frontier/Explored, insert it into Frontier.</li>
+                    <li>If <em>m</em> is in Frontier with a higher cost, replace it with the new lower cost.</li>
+                    <li>Repeat from step 2.</li>
+                </ol>
             </div>
-            
-            <!-- A* Box -->
-            <div class="code-editor-box informed-theme">
-                <div class="code-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                    <span class="filename">A_Star_Algorithm.pseudo</span>
+
+            <!-- A* -->
+            <div class="algo-container algo-informed">
+                <div class="algo-header">
+                    <span>A* Search (A-Star)</span>
+                    <span style="color: var(--accent-alt);">O(b^d) depending on h(n)</span>
                 </div>
-                <div class="code-content">
-                    <span class="code-comment">// Informed Search Algorithm</span>
-                    <span class="code-comment">// Expands node with lowest f(n) = g(n) + h(n)</span>
-                    <ol class="code-timeline">
-                        <li><span class="keyword">Init</span> open list <span class="string">OPEN</span>, closed list <span class="string">CLOSED</span></li>
-                        <li><span class="keyword">Insert</span> root into <span class="string">OPEN</span> with <span class="string">f(n) = h(n)</span></li>
-                        <li><span class="keyword">While</span> <span class="string">OPEN</span> is not empty:
-                            <ol>
-                                <li><span class="keyword">Pop</span> node <span class="string">n</span> with lowest <span class="string">f(n)</span></li>
-                                <li><span class="keyword">Push</span> <span class="string">n</span> to <span class="string">CLOSED</span></li>
-                                <li><span class="keyword">If</span> <span class="string">n</span> is goal, <span class="keyword">Return</span> path</li>
-                                <li><span class="keyword">For each</span> successor <span class="string">s</span> of <span class="string">n</span>:
-                                    <ul>
-                                        <li><span class="string">g(s) = g(n) + cost(n, s)</span></li>
-                                        <li><span class="string">f(s) = g(s) + h(s)</span></li>
-                                        <li><span class="keyword">If</span> better path, add to <span class="string">OPEN</span></li>
-                                    </ul>
-                                </li>
-                            </ol>
-                        </li>
-                        <li><span class="keyword">Return</span> failure</li>
-                    </ol>
+                <ol class="code-steps">
+                    <li>Insert root node into the Open List (priority queue) ordered by <strong>f(n)</strong>.</li>
+                    <li>Where <strong>f(n) = g(n) + h(n)</strong>.</li>
+                    <li>If Open List is empty, return failure.</li>
+                    <li>Pop the node <em>n</em> with the lowest <strong>f(n)</strong> value.</li>
+                    <li>If <em>n</em> is the goal state, return the solution path.</li>
+                    <li>Expand node <em>n</em>, generate successors. For each successor <em>m</em>:
+                        <br>&nbsp;&nbsp;g(m) = g(n) + cost(n, m)
+                        <br>&nbsp;&nbsp;f(m) = g(m) + h(m)
+                    </li>
+                    <li>If <em>m</em> is not in Open/Closed lists, add to Open List.</li>
+                    <li>If <em>m</em> is in Open/Closed lists with higher f(m), update its cost and parent.</li>
+                    <li>Add <em>n</em> to Closed List and repeat from step 3.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example / Results Section -->
+    <section id="example" class="fade-in">
+        <h2 class="section-title">Result & Visualization Example</h2>
+        <div class="card">
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">
+                Let us compare UCS and A* on a simple routing graph from Start (A) to Goal (G).
+            </p>
+            
+            <div class="example-graph">
+                <div class="graph-visual">
+        (A)
+       /   \
+  3  /       \ 4
+   /           \
+ (B)-----------(C)
+   \     2     /
+  5  \       / 6
+       \   /
+        (G)
+                </div>
+                <p style="margin-top: 10px; color: var(--text-muted); font-size: 0.9rem;">
+                    <em>Edge Costs: A-B=3, A-C=4, B-C=2, B-G=5, C-G=6</em><br>
+                    <em>Heuristics h(n): A=6, B=4, C=4, G=0</em>
+                </p>
+            </div>
+
+            <div class="grid-2">
+                <!-- UCS Calc -->
+                <div class="calc-box">
+                    <h4>Uniform Cost Search (UCS) Evaluation</h4>
+                    <p>UCS expands based strictly on path cost <strong>g(n)</strong>.</p>
+                    <div class="math">
+                        1. Start A, Frontier: [(A, 0)]<br>
+                        2. Pop A. Frontier: [(B, 3), (C, 4)]<br>
+                        3. Pop B. Update Frontier: [(C, 4), (C via B, 5), (G via B, 8)]<br>
+                        4. Pop C. Update Frontier: [(G via B, 8), (G via C, 10)]<br>
+                        5. Pop G (Cost: 8).
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>Result Path:</strong> A → B → G (Cost = 8)</p>
+                    <p><em>Nodes expanded blindly based on accumulated cost.</em></p>
+                </div>
+
+                <!-- A* Calc -->
+                <div class="calc-box alt">
+                    <h4>A* Search Evaluation</h4>
+                    <p>A* expands based on <strong>f(n) = g(n) + h(n)</strong>.</p>
+                    <div class="math">
+                        1. Start A (f=0+6=6). Open: [(A, 6)]<br>
+                        2. Pop A. Add B (f=3+4=7), Add C (f=4+4=8). Open: [(B, 7), (C, 8)]<br>
+                        3. Pop B (lowest f). Add G (f=8+0=8). Open: [(C, 8), (G, 8)]<br>
+                        4. Pop G (Goal reached!).
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>Result Path:</strong> A → B → G (Cost = 8)</p>
+                    <p><em>A* skips expanding C completely because the heuristic guided it straight to the goal via B!</em></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Example / Result -->
-    <section id="example" class="animate-on-scroll alt-bg">
-        <h2 class="section-title">Execution Example (Nodes A,B,C,D,G)</h2>
-        <div class="card glass-card example-card">
-            <p class="example-desc">Consider a graph to find the shortest path from Start Node (A) to Goal Node (G).</p>
-            <div class="example-grid">
-                <!-- Visual Graph -->
-                <div class="graph-visual">
-                    <svg width="350" height="250" viewBox="0 0 350 250" class="graph-svg">
-                        <!-- Edges -->
-                        <line x1="40" y1="125" x2="140" y2="60" stroke="#555" stroke-width="2"/>
-                        <line x1="40" y1="125" x2="140" y2="190" stroke="#555" stroke-width="2"/>
-                        <line x1="140" y1="190" x2="240" y2="190" stroke="#555" stroke-width="2"/>
-                        <line x1="140" y1="60" x2="240" y2="190" stroke="#555" stroke-width="2"/>
-                        <line x1="140" y1="60" x2="320" y2="125" stroke="#555" stroke-width="2"/>
-                        <line x1="240" y1="190" x2="320" y2="125" stroke="#555" stroke-width="2"/>
-                        
-                        <!-- Edge Costs -->
-                        <rect x="80" y="70" width="20" height="20" fill="var(--bg-dark)" rx="5" />
-                        <text x="90" y="85" class="edge-cost">4</text>
-                        <rect x="80" y="155" width="20" height="20" fill="var(--bg-dark)" rx="5" />
-                        <text x="90" y="170" class="edge-cost">2</text>
-                        <rect x="180" y="180" width="20" height="20" fill="var(--bg-dark)" rx="5" />
-                        <text x="190" y="195" class="edge-cost">2</text>
-                        <rect x="180" y="115" width="20" height="20" fill="var(--bg-dark)" rx="5" />
-                        <text x="190" y="130" class="edge-cost">5</text>
-                        <rect x="220" y="80" width="20" height="20" fill="var(--bg-dark)" rx="5" />
-                        <text x="230" y="95" class="edge-cost">3</text>
-                        <rect x="270" y="155" width="20" height="20" fill="var(--bg-dark)" rx="5" />
-                        <text x="280" y="170" class="edge-cost">4</text>
-                        
-                        <!-- Nodes -->
-                        <circle cx="40" cy="125" r="22" class="graph-node-start"/>
-                        <text x="40" y="131" class="node-text">A</text>
-                        <text x="40" y="165" class="heuristic-text">h=7</text>
-                        
-                        <circle cx="140" cy="60" r="22" class="graph-node"/>
-                        <text x="140" y="66" class="node-text-dark">B</text>
-                        <text x="140" y="25" class="heuristic-text">h=3</text>
-                        
-                        <circle cx="140" cy="190" r="22" class="graph-node"/>
-                        <text x="140" y="196" class="node-text-dark">C</text>
-                        <text x="140" y="230" class="heuristic-text">h=6</text>
-                        
-                        <circle cx="240" cy="190" r="22" class="graph-node"/>
-                        <text x="240" y="196" class="node-text-dark">D</text>
-                        <text x="240" y="230" class="heuristic-text">h=3</text>
-                        
-                        <circle cx="320" cy="125" r="22" class="graph-node-goal"/>
-                        <text x="320" y="131" class="node-text">G</text>
-                        <text x="320" y="165" class="heuristic-text">h=0</text>
-                    </svg>
-                    <p class="graph-legend"><span class="legend-red">Red numbers:</span> Step Cost g(n) | <span class="legend-gray">Gray labels:</span> Heuristic Cost h(n)</p>
+    <!-- Proposed System Diagram -->
+    <section class="fade-in">
+        <h2 class="section-title">Proposed System Architecture</h2>
+        <div class="diagram-wrapper">
+            <div class="diag-node">Problem Input<br><small>(State Space)</small></div>
+            <div class="diag-arrow">→</div>
+            
+            <div class="diag-split">
+                <div class="diag-node light" style="border-color: var(--accent);">
+                    <strong>Uninformed Engine</strong><br>
+                    Cost: g(n) Only
                 </div>
-
-                <!-- Tabbed Table Comparison -->
-                <div class="tabs-container">
-                    <div class="tab-buttons">
-                        <button class="tab-btn active" data-target="ucs-tab"><i class="fas fa-search"></i> UCS Steps</button>
-                        <button class="tab-btn" data-target="astar-tab"><i class="fas fa-star"></i> A* Steps</button>
-                    </div>
-                    
-                    <div id="ucs-tab" class="tab-content active">
-                        <h4>UCS Evaluation (Focuses on g(n))</h4>
-                        <table class="step-table">
-                            <tr>
-                                <th>Step</th>
-                                <th>Current Node</th>
-                                <th>Queue (Node : g)</th>
-                            </tr>
-                            <tr><td>1</td><td>A</td><td>B:4, C:2</td></tr>
-                            <tr><td>2</td><td>C (Cost 2)</td><td>B:4, D:4</td></tr>
-                            <tr><td>3</td><td>B (Cost 4)</td><td>D:4, G:7</td></tr>
-                            <tr><td>4</td><td>D (Cost 4)</td><td>G:7, G:8(Drop)</td></tr>
-                            <tr><td>5</td><td><strong>G (Cost 7)</strong></td><td><strong>Goal Reached</strong></td></tr>
-                        </table>
-                    </div>
-
-                    <div id="astar-tab" class="tab-content">
-                        <h4>A* Evaluation (Focuses on f = g + h)</h4>
-                        <table class="step-table">
-                            <tr>
-                                <th>Step</th>
-                                <th>Current Node</th>
-                                <th>OPEN (Node : f)</th>
-                            </tr>
-                            <tr><td>1</td><td>A</td><td>B:7, C:8</td></tr>
-                            <tr><td>2</td><td>B (Cost 7)</td><td>C:8, G:7, D:12</td></tr>
-                            <tr><td>3</td><td><strong>G (Cost 7)</strong></td><td><strong>Goal Reached</strong></td></tr>
-                        </table>
-                        <p class="tab-result"><strong>Result:</strong> A* explores fewer nodes by prioritizing total estimated cost, rapidly reaching path A &rarr; B &rarr; G.</p>
-                    </div>
+                <div class="diag-node light" style="border-color: var(--accent-alt);">
+                    <strong>Informed Engine</strong><br>
+                    Cost: f(n) = g(n) + h(n)
                 </div>
             </div>
+            
+            <div class="diag-arrow">→</div>
+            <div class="diag-node">Evaluation &<br>Path Selection</div>
+            <div class="diag-arrow">→</div>
+            <div class="diag-node" style="background: var(--accent);">Optimal Output<br><small>(Path & Cost)</small></div>
         </div>
     </section>
 
     <!-- Applications Section -->
-    <section id="applications" class="animate-on-scroll">
+    <section id="applications" class="fade-in">
         <h2 class="section-title">Real-World Applications</h2>
-        <div class="apps-grid">
-            <div class="app-item glass-card">
-                <div class="app-icon teal-icon"><i class="fas fa-map-location-dot"></i></div>
-                <div class="app-info">
-                    <h4>Route Navigation/GPS</h4>
-                    <p>Google Maps using A* variants for shortest paths.</p>
-                </div>
+        <div class="app-grid">
+            <div class="app-card">
+                <div class="app-icon">🗺️</div>
+                <h3>Route Navigation & GPS</h3>
+                <p>Finding the shortest routes dynamically using A* and Dijkstra's algorithm.</p>
             </div>
-            <div class="app-item glass-card">
-                <div class="app-icon orange-icon"><i class="fas fa-robot"></i></div>
-                <div class="app-info">
-                    <h4>Robotics</h4>
-                    <p>Path planning, arm movement, and obstacle avoidance.</p>
-                </div>
+            <div class="app-card">
+                <div class="app-icon">🤖</div>
+                <h3>Robotics</h3>
+                <p>Path planning for robots to navigate around obstacles to a target location.</p>
             </div>
-            <div class="app-item glass-card">
-                <div class="app-icon teal-icon"><i class="fas fa-gamepad"></i></div>
-                <div class="app-info">
-                    <h4>Game AI</h4>
-                    <p>NPC movement and tactical planning in virtual worlds.</p>
-                </div>
+            <div class="app-card">
+                <div class="app-icon">🎮</div>
+                <h3>Game AI</h3>
+                <p>NPCs navigating complex maps and environments to intercept or assist players.</p>
             </div>
-            <div class="app-item glass-card">
-                <div class="app-icon orange-icon"><i class="fas fa-network-wired"></i></div>
-                <div class="app-info">
-                    <h4>Network Routing</h4>
-                    <p>Optimizing data packet traversal through routers (e.g. OSPF).</p>
-                </div>
+            <div class="app-card">
+                <div class="app-icon">🌐</div>
+                <h3>Network Routing</h3>
+                <p>Packet routing across computer networks optimizing latency and bandwidth.</p>
             </div>
-            <div class="app-item glass-card">
-                <div class="app-icon teal-icon"><i class="fas fa-car-side"></i></div>
-                <div class="app-info">
-                    <h4>Autonomous Vehicles</h4>
-                    <p>Real-time decision making and trajectory planning.</p>
-                </div>
+            <div class="app-card">
+                <div class="app-icon">🚗</div>
+                <h3>Autonomous Vehicles</h3>
+                <p>Real-time decision making for trajectory planning in self-driving cars.</p>
             </div>
-            <div class="app-item glass-card">
-                <div class="app-icon orange-icon"><i class="fas fa-chart-line"></i></div>
-                <div class="app-info">
-                    <h4>Decision Support</h4>
-                    <p>Expert systems resolving constraints for medical diagnosis.</p>
-                </div>
-            </div>
-            <div class="app-item glass-card">
-                <div class="app-icon teal-icon"><i class="fas fa-puzzle-piece"></i></div>
-                <div class="app-info">
-                    <h4>Puzzle Solving</h4>
-                    <p>Solving 8-puzzle, Rubik's cube, Sudoku using IDA*.</p>
-                </div>
+            <div class="app-card">
+                <div class="app-icon">🧩</div>
+                <h3>Puzzle Solving</h3>
+                <p>Solving deterministic problems like Rubik's Cube, 8-Puzzle, or Sudoku.</p>
             </div>
         </div>
     </section>
 
     <!-- Future Scope -->
-    <section id="future" class="animate-on-scroll alt-bg">
+    <section class="fade-in">
         <h2 class="section-title">Future Scope</h2>
-        <ul class="future-list">
-            <li class="glass-card">
-                <i class="fas fa-arrow-right list-icon"></i>
-                <div class="list-content">
-                    <strong>Hybrid Search Algorithms:</strong> Combining informed heuristics with Deep Reinforcement Learning to dynamically generate highly accurate heuristics for massive state spaces (e.g., AlphaGo).
-                </div>
-            </li>
-            <li class="glass-card">
-                <i class="fas fa-arrow-right list-icon"></i>
-                <div class="list-content">
-                    <strong>Quantum Search Algorithms:</strong> Adapting classical search techniques (like Grover's algorithm) to quantum computers for quadratic speedups in uninformed search domains.
-                </div>
-            </li>
-            <li class="glass-card">
-                <i class="fas fa-arrow-right list-icon"></i>
-                <div class="list-content">
-                    <strong>Dynamic Environments:</strong> Advancing algorithms like D* Lite for better performance in environments where obstacles and traversal costs change continuously.
-                </div>
-            </li>
-            <li class="glass-card">
-                <i class="fas fa-arrow-right list-icon"></i>
-                <div class="list-content">
-                    <strong>Multi-Agent Pathfinding (MAPF):</strong> Optimizing heuristic searches for the coordinated movement of hundreds of agents without collisions.
-                </div>
-            </li>
-        </ul>
-    </section>
-
-    <!-- Conclusion -->
-    <section id="conclusion" class="animate-on-scroll">
-        <div class="conclusion-box glass-card gradient-bg">
-            <h2>Conclusion</h2>
-            <p>
-                The choice between uninformed and informed search heavily depends on the problem's domain and the availability of heuristic information. While <strong>Uninformed Search</strong> acts as a robust, universal fallback mechanism ensuring completeness, it frequently suffers from exponential time and space complexity. <strong>Informed Search</strong>, particularly A*, represents a significant evolution, blending the completeness of uninformed search with remarkable efficiency driven by heuristics. In modern intelligent systems—from GPS routing to autonomous navigation—informed search forms the fundamental cornerstone of real-time spatial reasoning and optimal decision-making.
-            </p>
+        <div class="card">
+            <ul class="bullet-list">
+                <li><strong>Hybrid Search Algorithms:</strong> Developing algorithms that dynamically switch between uninformed and informed strategies based on the current state space constraints.</li>
+                <li><strong>Machine Learning Integration:</strong> Utilizing deep learning models to dynamically generate and optimize heuristic functions <em>h(n)</em> for previously unseen problems.</li>
+                <li><strong>Quantum Search Optimization:</strong> Exploring Grover's algorithm and quantum analogues to dramatically reduce the time complexity of unstructured search spaces.</li>
+                <li><strong>Real-Time Dynamic Environments:</strong> Enhancing algorithms (like D* Lite) for rapidly changing environments common in advanced robotics and autonomous drones.</li>
+            </ul>
         </div>
     </section>
 
     <!-- References -->
-    <section id="references" class="animate-on-scroll alt-bg">
+    <section class="fade-in">
         <h2 class="section-title">References</h2>
-        <ul class="ref-list glass-card">
-            <li>Russell, S. J., & Norvig, P. (2020). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
-            <li>Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). <em>Introduction to Algorithms</em> (3rd ed.). MIT Press.</li>
-            <li>Hart, P. E., Nilsson, N. J., & Raphael, B. (1968). A Formal Basis for the Heuristic Determination of Minimum Cost Paths. <em>IEEE Transactions on Systems Science and Cybernetics</em>.</li>
-            <li>Design and Analysis of Algorithms (N-PCCCD501T) Course Curriculum, Dept. of CSE (Data Science), S.B. Jain Institute.</li>
-        </ul>
+        <div class="card">
+            <ol class="ref-list">
+                <li>Russell, S. J., & Norvig, P. (2020). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.</li>
+                <li>Cormen, T. H., Leiserson, C. E., Rivest, RL., & Stein, C. (2009). <em>Introduction to Algorithms</em> (3rd ed.). MIT Press.</li>
+                <li>Hart, P. E., Nilsson, N. J., & Raphael, B. (1968). "A Formal Basis for the Heuristic Determination of Minimum Cost Paths". <em>IEEE Transactions on Systems Science and Cybernetics</em>.</li>
+                <li>Dechter, R., & Pearl, J. (1985). "Generalized best-first search strategies and the optimality of A*". <em>Journal of the ACM</em>.</li>
+            </ol>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <p><strong>Design and Analysis of Algorithms (N-PCCCD501T)</strong></p>
-            <p>Academic Project Developed by <span class="highlight">Sejal Raju Ambilduke</span> (USN: CD24047)</p>
-            <p>S.B. Jain Institute of Technology, Management and Research, Nagpur</p>
-            <p class="copyright">&copy; 2024. All rights reserved.</p>
+        <h3>S.B. Jain Institute of Technology, Management and Research, Nagpur</h3>
+        <p>Department of Computer Science & Engineering (Data Science)</p>
+        <p>Course: Design and Analysis of Algorithms (N-PCCCD501P)</p>
+        
+        <div class="footer-credits">
+            <p>Designed and Developed by <span class="footer-highlight">Sejal Raju Ambilduke</span> (USN: CD24047)</p>
+            <p>&copy; 2026 Academic Project Submission</p>
         </div>
     </footer>
 
-    <!-- Script File -->
+    <!-- Scroll Animation Script -->
     <script src="script.js"></script>
 </body>
 </html>
